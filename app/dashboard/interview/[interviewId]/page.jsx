@@ -52,9 +52,7 @@ const InterviewPage = ({params}) => {
               <Lightbulb />
               <span>Information</span>
             </h2>
-            {/* <h2 className="mt-3 text-yellow-500">
-              {process.env.NEXT_PUBLIC_INFORMATION}
-            </h2> */}
+
           </div>
         </div>
 
@@ -73,7 +71,7 @@ const InterviewPage = ({params}) => {
         </div>
         </div>
         <div className="flex justify-end items-end">
-        <Link>
+        <Link href={`/dashboard/interview/${params.interviewId}/start`}>
           <Button>Start Interview</Button>
         </Link>
       </div>
