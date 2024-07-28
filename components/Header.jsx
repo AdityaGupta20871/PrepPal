@@ -12,12 +12,11 @@ const Header = () => {
   })
   return (
     <div className='flex p-4 items-center justify-between bg-secondary shadow-sm'>
-        <Image src={'../public/vercel.svg'} alt='logo' width={160} height={100}  style={{ width: "auto", height: "auto" }}   />
+        <Image src={'/PrepPal.png'} alt='logo' width={60} height={60}  style={{ width: "auto", height: "auto" }}   />
         <ul className='hidden md:flex gap-6'>
             <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard' && 'text-primary font-bold'}`}>Dashboard</li>
-            <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard' && 'text-primary font-bold'}`}>Questions</li>
-            <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard' && 'text-primary font-bold'}`}>Upgrade</li>
-            <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard' && 'text-primary font-bold'}`}>How its works?</li>
+            <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/questions' && 'text-primary font-bold'}`}>Questions</li>
+
         </ul>
         <UserButton/>
     </div>
