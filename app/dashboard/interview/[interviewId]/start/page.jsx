@@ -1,7 +1,7 @@
 "use client"
 import { PrepSchema } from '@/utils/schema';
 import { useState } from 'react';
-import React from 'react'
+import React from 'react';
 import { useEffect } from 'react';
 import { db } from '@/utils/db';
 import { eq } from 'drizzle-orm';
@@ -10,14 +10,14 @@ import Record from '@/components/Record';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const page = ({params}) => {
-    const [interviewData, setInterviewData] = useState();
+const page = ({ params }) => {
+  const [interviewData, setInterviewData] = useState();
   const [InterviewQuestion, setInterviewQuestion] = useState();
   const [QuestionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
     GetInterviewDetails();
-  }, []);
+  }, [params.interviewId]); // Added missing dependency
 
   const GetInterviewDetails = async () => {
     const result = await db
@@ -31,20 +31,30 @@ const page = ({params}) => {
 
   return (
     <div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <Questions InterviewQuestion={InterviewQuestion} QuestionIndex={QuestionIndex} />
-        <Record InterviewQuestion={InterviewQuestion} QuestionIndex={QuestionIndex} interviewData={interviewData} />
-        </div>
-        <div className="flex justify-end gap-6">
-        {QuestionIndex > 0 && <Button onClick={()=>setQuestionIndex(QuestionIndex-1)}>Previous Question</Button>}
-        {QuestionIndex!=InterviewQuestion?.length-1 && <Button onClick={()=>setQuestionIndex(QuestionIndex+1)}>Next Question</Button>}
-        {QuestionIndex==InterviewQuestion?.length-1 &&
-        <Link href={'/dashboard/interview/'+interviewData?.mockId+'/result'}>
-         <Button>End Interview</Button>
-         </Link>}
+        <Record
+          InterviewQuestion={InterviewQuestion}
+          QuestionIndex={QuestionIndex}
+          interviewData={interviewData}
+          key={QuestionIndex} // Added key prop
+        />
+      </div>
+      <div className="flex justify-end gap-6">
+        {QuestionIndex > 0 && (
+          <Button onClick={() => setQuestionIndex(QuestionIndex - 1)}>Previous Question</Button>
+        )}
+        {QuestionIndex != InterviewQuestion?.length - 1 && (
+          <Button onClick={() => setQuestionIndex(QuestionIndex + 1)}>Next Question</Button>
+        )}
+        {QuestionIndex == InterviewQuestion?.length - 1 && (
+          <Link href={'/dashboard/interview/' + interviewData?.mockId + '/result'}>
+            <Button>End Interview</Button>
+          </Link>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
