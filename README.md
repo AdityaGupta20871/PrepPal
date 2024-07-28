@@ -1,6 +1,7 @@
 # PrepPal
 
 PrepPal is a web application designed to help users prepare for interviews by providing a platform to practice and receive feedback on their responses.
+Important note: This application will only run on Chrome due to compatibility issue of react speech to text hook.
 
 ## Features
 
