@@ -14,7 +14,6 @@ import { useUser } from "@clerk/nextjs";
 import moment from 'moment';
 import { UserAnswer } from '@/utils/schema';
 
-
 const Record = ({InterviewQuestion,QuestionIndex,interviewData}) => {
     const [userAnswer, setUserAnswer] = useState("");
     const [loading, setLoading] = useState(false);
@@ -105,7 +104,7 @@ const Record = ({InterviewQuestion,QuestionIndex,interviewData}) => {
     <div className="flex justify-cente items-center flex-col">
     <div className="flex flex-col my-20 justify-center items-center bg-black rounded-lg p-5">
         {/* <Image
-          src={"/webcam.png"}
+          src={"/PrepPal.png"}
           width={200}
           height={200}
           className="absolute"
@@ -115,7 +114,6 @@ const Record = ({InterviewQuestion,QuestionIndex,interviewData}) => {
         <Webcam
           style={{ height: 300, width: "100%", zIndex: 10 }}
           mirrored={true}
-
         />
       </div>
       <Button
@@ -133,9 +131,6 @@ const Record = ({InterviewQuestion,QuestionIndex,interviewData}) => {
             <Mic /> Record Answer
           </h2>
         )}
-      </Button>
-      <Button onClick={() => console.log("------", userAnswer)}>
-        Show User Answer
       </Button>
       </div>
   )
