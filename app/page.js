@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         <Image src="/PrepPal.png" alt="Feature Image" width={300} height={300} className=" rounded-lg shadow-lg"/>
           <h1 className="text-5xl font-bold mb-4 shadow-lg">Welcome to PrepPal</h1>
           <p className="text-lg mb-8">Revolutionize your interview preparation with personalized AI-driven mock interviews.</p>
-         <Link href='/dashboard'><Button className="bg-yellow-400 p-5 text-gray-800 hover:bg-yellow-500 transition-all">Get Started</Button></Link> 
+         <Link href='/dashboard'><Button className="bg-yellow-400 p-5 text-gray-800 hover:bg-yellow-500 transition-all">Get Started <ArrowRight /></Button></Link> 
         </div>
       </section>
       <footer className="bg-gray-900 text-gray-400 py-4 text-center">
