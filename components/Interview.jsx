@@ -49,11 +49,11 @@ function Interview() {
       }
   
       const jsonResponsePart = jsonMatch[0];
-      
+      console.log("🚀 ~ file: AddNewInterview.jsx:43 ~ onSubmit ~ jsonResponsePart:", jsonResponsePart);
   
       if (jsonResponsePart) {
         const mockResponse = JSON.parse(jsonResponsePart.trim());
-        
+        console.log("🚀 ~ file: AddNewInterview.jsx:45 ~ onSubmit ~ mockResponse:", mockResponse)
         setJsonResponse(mockResponse);
         const jsonString = JSON.stringify(mockResponse);
         const res = await db.insert(PrepSchema)

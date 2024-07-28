@@ -7,9 +7,11 @@ import { db } from '@/utils/db';
 import { eq } from 'drizzle-orm';
 import Questions from '@/components/Questions';
 import Record from '@/components/Record';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const page = ({params}) => {
-    const [interViewData, setInterviewData] = useState();
+    const [interviewData, setInterviewData] = useState();
   const [InterviewQuestion, setInterviewQuestion] = useState();
   const [QuestionIndex, setQuestionIndex] = useState(0);
 
@@ -31,8 +33,16 @@ const page = ({params}) => {
     <div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <Questions InterviewQuestion={InterviewQuestion} QuestionIndex={QuestionIndex} />
-        <Record InterviewQuestion={InterviewQuestion} QuestionIndex={QuestionIndex} />
+        <Record InterviewQuestion={InterviewQuestion} QuestionIndex={QuestionIndex} interviewData={interviewData} />
         </div>
+        <div className="flex justify-end gap-6">
+        {QuestionIndex > 0 && <Button onClick={()=>setQuestionIndex(QuestionIndex-1)}>Previous Question</Button>}
+        {QuestionIndex!=InterviewQuestion?.length-1 && <Button onClick={()=>setQuestionIndex(QuestionIndex+1)}>Next Question</Button>}
+        {QuestionIndex==InterviewQuestion?.length-1 &&
+        <Link href={'/dashboard/interview/'+interviewData?.mockId+'/result'}>
+         <Button>End Interview</Button>
+         </Link>}
+      </div>
     </div>
   )
 }
