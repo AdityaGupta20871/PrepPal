@@ -33,14 +33,14 @@ Before you begin, ensure you have met the following requirements:
    git clone https://github.com/yourusername/PrepPal.git
    cd PrepPal
 
-  ## Install Dependencies
+2.  ## Install Dependencies
+    ```bash
+    npm intall
 
-  ```bash
-  npm install
 
- ## Set up Environment Variables
+3. ## Set up Environment Variables
 
-  ```bash
+```bash
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
