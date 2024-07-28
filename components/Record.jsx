@@ -11,7 +11,7 @@ import { useUser } from "@clerk/nextjs";
 import moment from 'moment';
 import { UserAnswer } from '@/utils/schema';
 
-const Record = ({ InterviewQuestion, QuestionIndex, interviewData }) => {
+const Record = ({ InterviewQuestion, QuestionIndex, InterviewData }) => {
     const [userAnswer, setUserAnswer] = useState("");
     const [loading, setLoading] = useState(false);
     const { user } = useUser();  
@@ -64,12 +64,12 @@ const Record = ({ InterviewQuestion, QuestionIndex, interviewData }) => {
         const JsonFeedback = JSON.parse(cleanedJsonRes);
 
         // Debug logs
-        console.log("interViewData:", interviewData);
-        console.log("interViewData.mockId:", interviewData?.mockId);
+        console.log("interViewData:", InterviewData);
+        console.log("interViewData.mockId:", InterviewData?.mockId);
 
-        if (interviewData?.mockId) {
+        if (InterviewData?.mockId) {
             const resp = await db.insert(UserAnswer).values({
-                mockIdRef: interviewData.mockId,
+                mockIdRef: InterviewData.mockId,
                 question: InterviewQuestion[QuestionIndex]?.question,
                 correctAns: InterviewQuestion[QuestionIndex]?.answer,
                 userAns: userAnswer,

@@ -10,14 +10,15 @@ import Record from '@/components/Record';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+
 const page = ({ params }) => {
-  const [interviewData, setInterviewData] = useState();
+  const [InterviewData, setInterviewData] = useState();
   const [InterviewQuestion, setInterviewQuestion] = useState();
   const [QuestionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
     GetInterviewDetails();
-  }, [params.interviewId]); // Added missing dependency
+  }, []); 
 
   const GetInterviewDetails = async () => {
     const result = await db
@@ -36,7 +37,7 @@ const page = ({ params }) => {
         <Record
           InterviewQuestion={InterviewQuestion}
           QuestionIndex={QuestionIndex}
-          interviewData={interviewData}
+          InterviewData={InterviewData}
           key={QuestionIndex} // Added key prop
         />
       </div>
@@ -48,7 +49,7 @@ const page = ({ params }) => {
           <Button onClick={() => setQuestionIndex(QuestionIndex + 1)}>Next Question</Button>
         )}
         {QuestionIndex == InterviewQuestion?.length - 1 && (
-          <Link href={'/dashboard/interview/' + interviewData?.mockId + '/result'}>
+          <Link href={'/dashboard/interview/' + InterviewData?.mockId + '/result'}>
             <Button>End Interview</Button>
           </Link>
         )}

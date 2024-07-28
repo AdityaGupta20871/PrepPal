@@ -138,7 +138,8 @@ function Interview() {
                 <Button disabled={loading} type="submit">
                     {loading?
                     <>
-                        <LoaderCircle />'Generating from AI'</>
+                        <LoaderCircle /> <p>Generating</p>
+                    </>
                         :'Start'
                          }
                   Submit
