@@ -27,6 +27,17 @@ const Record = ({ InterviewQuestion, QuestionIndex, interviewData }) => {
         continuous: true,
         useLegacyResults: false,
     });
+    useEffect(() => {
+        if (!isRecording && userAnswer.length > 10) {
+            UpdateUserAnswer();
+        }
+    }, [userAnswer]); 
+    
+        useEffect(() => {
+            results.map((result) => {
+                setUserAnswer((prevAns) => prevAns + result?.transcript);
+            });
+        }, [results]);
 
     const StartStopRecording = async () => {
         if (isRecording) {
@@ -78,18 +89,8 @@ const Record = ({ InterviewQuestion, QuestionIndex, interviewData }) => {
         }
     };
 
-    useEffect(() => {
-    if (!isRecording && userAnswer.length > 10) {
-        UpdateUserAnswer();
-    }
-}, [userAnswer, isRecording, UpdateUserAnswer]); 
 
-    useEffect(() => {
-        results.map((result) => {
-            setUserAnswer((prevAns) => prevAns + result?.transcript);
-        });
-    }, [results]);
-
+    if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
     return (
         <div className="flex justify-center items-center flex-col">
             <div className="flex flex-col my-20 justify-center items-center bg-black rounded-lg p-5">
