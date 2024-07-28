@@ -14,7 +14,7 @@ const List = () => {
         if (user) {
             GetInterviewList();
         }
-    }, [user]);
+    }, [useruser, GetInterviewList]);
 
     const GetInterviewList = async () => {
         try {

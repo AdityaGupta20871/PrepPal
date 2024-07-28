@@ -14,14 +14,14 @@ const Questions = ({ InterviewQuestion, QuestionIndex }) => {
     return InterviewQuestion && (
         <div className='p-5 border rounded-lg my-10'>
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
-                {InterviewQuestion.map((question, index) => (
-                    <h2 
-                        key={index} // Added key prop
-                        className={`p-2 bg-secondary rounded-full text-xs md:text-sm text-center cursor-pointer ${QuestionIndex === index ? 'bg-blue-700 text-white' : ''}`}
-                    >
-                        Question #{index + 1}
-                    </h2>
-                ))}
+                {InterviewQuestion && InterviewQuestion.map((question, index) => (
+    <h2 
+        key={index} // Add key prop here
+        className={`p-2 bg-secondary rounded-full text-xs md:text-sm text-center cursor-pointer ${QuestionIndex == index && 'bg-blue-700 text-white'}`}
+    >
+        Question #{index+1}
+    </h2>
+))}
             </div>
             <h2 className='my-5 text-md md:text-lg'>
                 {InterviewQuestion[QuestionIndex]?.question}

@@ -79,10 +79,10 @@ const Record = ({ InterviewQuestion, QuestionIndex, interviewData }) => {
     };
 
     useEffect(() => {
-        if (!isRecording && userAnswer.length > 10) {
-            UpdateUserAnswer();
-        }
-    }, [userAnswer, isRecording]);
+    if (!isRecording && userAnswer.length > 10) {
+        UpdateUserAnswer();
+    }
+}, [userAnswer, isRecording, UpdateUserAnswer]); 
 
     useEffect(() => {
         results.map((result) => {
