@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
   const [InterviewData, setInterviewData] = useState();
   const [InterviewQuestion, setInterviewQuestion] = useState();
   const [QuestionIndex, setQuestionIndex] = useState(0);
@@ -58,4 +58,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;

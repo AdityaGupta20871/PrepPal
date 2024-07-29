@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/collapsible"
 import { ChevronsUpDown } from 'lucide-react';
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
     const [resultList, setResultList] = useState([]);
     const router = useRouter()
     useEffect(() => {
@@ -65,4 +65,4 @@ const page = ({ params }) => {
     )
 }
 
-export default page
+export default Page
